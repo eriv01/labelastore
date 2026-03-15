@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="LA BELA STORE — Moda Feminina Exclusiva">
   <title>LA BELA STORE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,45 +12,62 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #fce8ef;
       font-family: 'Montserrat', sans-serif;
     }
 
-    /* TELA INTEIRA EM UMA DOBRA */
-    .page {
-      width: 100%;
-      height: 100svh;
-      max-width: 430px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      background: #fce8ef;
+    /* IMAGEM COBRE 100% DA TELA */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url('https://doram.shop/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-16.03.13.jpeg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
     }
 
-    /* IMAGEM — ocupa o espaço disponível até o conteúdo */
-    .img-wrap {
-      flex: 1;
-      min-height: 0;
-      overflow: hidden;
-    }
-    .img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
+    /* overlay suave só na parte de baixo p/ legibilidade */
+    .bg::after {
+      content: '';
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 45%;
+      background: linear-gradient(to top, rgba(252,220,232,0.82) 0%, transparent 100%);
+      z-index: 1;
     }
 
-    /* PARTE INFERIOR fixa */
-    .bottom {
-      flex-shrink: 0;
-      background: #fce8ef;
+    /* SPARKLES */
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .sparkle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffe8b0, #c9a96e);
+      opacity: 0;
+      animation: sparkleAnim var(--dur) ease-in-out var(--delay) infinite;
+    }
+    @keyframes sparkleAnim {
+      0%   { opacity: 0; transform: scale(0) translateY(0); }
+      40%  { opacity: 0.5; }
+      100% { opacity: 0; transform: scale(1.5) translateY(-60px); }
+    }
+
+    /* CONTEÚDO fixado na parte inferior */
+    .content {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 3;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 14px 28px 20px;
-      gap: 0;
+      padding: 0 28px 24px;
+      max-width: 430px;
+      margin: 0 auto;
     }
 
     /* divisor dourado */
@@ -70,7 +86,7 @@
       transform: translate(-50%, -50%);
       color: #c9a96e;
       font-size: 7px;
-      background: #fce8ef;
+      background: transparent;
       padding: 0 3px;
     }
 
@@ -78,16 +94,13 @@
     .headline {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 14px;
+      font-size: 15px;
       color: #5a2d42;
       text-align: center;
-      line-height: 1.6;
-      margin-bottom: 14px;
+      line-height: 1.65;
+      margin-bottom: 16px;
     }
-    .headline strong {
-      color: #b5607a;
-      font-weight: 600;
-    }
+    .headline strong { color: #b5607a; font-weight: 600; }
 
     /* BOTÃO */
     .btn-wa {
@@ -101,11 +114,9 @@
       background-size: 200% 200%;
       color: #fff;
       text-decoration: none;
-      padding: 15px 22px;
+      padding: 16px 22px;
       border-radius: 60px;
-      box-shadow:
-        0 8px 24px rgba(180,80,110,0.38),
-        inset 0 1px 0 rgba(255,255,255,0.25);
+      box-shadow: 0 8px 24px rgba(180,80,110,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
       animation: gradientShift 4s ease infinite, fadeUp 0.8s ease both;
       transition: transform 0.18s;
       position: relative;
@@ -113,7 +124,6 @@
       -webkit-tap-highlight-color: transparent;
     }
     .btn-wa:active { transform: scale(0.96); }
-
     .btn-wa::before {
       content: '';
       position: absolute;
@@ -125,61 +135,13 @@
     }
 
     .wa-icon { flex-shrink: 0; width: 26px; height: 26px; }
+    .btn-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.25; }
+    .btn-text .main { font-size: 13px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: #fff; }
+    .btn-text .sub  { font-size: 9px; font-weight: 500; opacity: 0.9; letter-spacing: 0.8px; color: #fff; }
 
-    .btn-text {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      line-height: 1.25;
-    }
-    .btn-text .main {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: #fff;
-    }
-    .btn-text .sub {
-      font-size: 9px;
-      font-weight: 500;
-      opacity: 0.9;
-      letter-spacing: 0.8px;
-      color: #fff;
-    }
+    .footer { margin-top: 10px; text-align: center; }
+    .footer p { font-size: 8px; color: #8a4060; letter-spacing: 1.2px; text-transform: uppercase; opacity: 0.6; }
 
-    .footer {
-      margin-top: 10px;
-      text-align: center;
-    }
-    .footer p {
-      font-size: 8px;
-      color: #a06070;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      opacity: 0.55;
-    }
-
-    /* sparkles */
-    .sparkles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 99;
-      overflow: hidden;
-    }
-    .sparkle {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ffe8b0, #c9a96e);
-      opacity: 0;
-      animation: sparkleAnim var(--dur) ease-in-out var(--delay) infinite;
-    }
-
-    @keyframes sparkleAnim {
-      0%   { opacity: 0; transform: scale(0) translateY(0); }
-      40%  { opacity: 0.5; }
-      100% { opacity: 0; transform: scale(1.5) translateY(-60px); }
-    }
     @keyframes gradientShift {
       0%,100% { background-position: 0% 50%; }
       50%     { background-position: 100% 50%; }
@@ -196,47 +158,36 @@
 </head>
 <body>
 
+  <div class="bg"></div>
   <div class="sparkles" id="sparkles"></div>
 
-  <div class="page">
+  <div class="content">
+    <div class="divider"></div>
 
-    <div class="img-wrap">
-      <img
-        src="https://doram.shop/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-16.03.13.jpeg"
-        alt="LA BELA STORE"
-        loading="eager"
-      >
-    </div>
+    <p class="headline">
+      Peças <strong>exclusivas</strong> para mulheres que sabem o que querem.<br>
+      Estilo, elegância e atendimento <strong>personalizado</strong>.
+    </p>
 
-    <div class="bottom">
-      <div class="divider"></div>
-
-      <p class="headline">
-        Peças <strong>exclusivas</strong> para mulheres que sabem o que querem.<br>
-        Estilo, elegância e atendimento <strong>personalizado</strong>.
-      </p>
-
-      <a
-        class="btn-wa"
-        href="https://wa.me/5547992864585?text=Ol%C3%A1!%20Seja%20muito%20bem-vinda(o)%20%C3%A0%20nossa%20loja%20%F0%9F%8C%B8%0AObrigada%20por%20entrar%20em%20contato!%20Em%20breve%20vou%20te%20atender%20e%20te%20mostrar%20nossas%20novidades%20dispon%C3%ADveis.%0AFique%20%C3%A0%20vontade%20para%20j%C3%A1%20me%20contar%20o%20que%20voc%C3%AA%20est%C3%A1%20procurando.%20%F0%9F%92%96"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg class="wa-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="16" fill="rgba(255,255,255,0.18)"/>
-          <path fill="#fff" d="M16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.9.5 3.7 1.4 5.3L5.5 26.5l5.4-1.4c1.5.8 3.3 1.3 5.1 1.3 5.8 0 10.5-4.7 10.5-10.5S21.8 5.5 16 5.5zm5.2 14.6c-.2.6-1.2 1.1-1.7 1.2-.4.1-.9.1-2.9-.6-2.4-.9-4-3.2-4.1-3.4-.1-.1-1-1.3-1-2.6s.7-1.9.9-2.1c.2-.2.4-.3.6-.3h.4c.2 0 .3 0 .5.4l.7 1.7c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.2.3-.1.5.5.8 1.1 1.6 1.8 2.2.8.7 1.6 1.1 1.9 1.2.2.1.4 0 .5-.1l.5-.6c.1-.2.3-.2.5-.1l1.7.8c.2.1.4.2.4.3.1.3 0 1-.1 1.3z"/>
-        </svg>
-        <div class="btn-text">
-          <span class="main">Ser Bem Atendida Agora 💖</span>
-          <span class="sub">Fale conosco no WhatsApp</span>
-        </div>
-      </a>
-
-      <div class="footer">
-        <p>© 2025 La Bela Store · Todos os direitos reservados</p>
+    <a
+      class="btn-wa"
+      href="https://wa.me/5547992864585?text=Ol%C3%A1!%20Seja%20muito%20bem-vinda(o)%20%C3%A0%20nossa%20loja%20%F0%9F%8C%B8%0AObrigada%20por%20entrar%20em%20contato!%20Em%20breve%20vou%20te%20atender%20e%20te%20mostrar%20nossas%20novidades%20dispon%C3%ADveis.%0AFique%20%C3%A0%20vontade%20para%20j%C3%A1%20me%20contar%20o%20que%20voc%C3%AA%20est%C3%A1%20procurando.%20%F0%9F%92%96"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg class="wa-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="16" fill="rgba(255,255,255,0.18)"/>
+        <path fill="#fff" d="M16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.9.5 3.7 1.4 5.3L5.5 26.5l5.4-1.4c1.5.8 3.3 1.3 5.1 1.3 5.8 0 10.5-4.7 10.5-10.5S21.8 5.5 16 5.5zm5.2 14.6c-.2.6-1.2 1.1-1.7 1.2-.4.1-.9.1-2.9-.6-2.4-.9-4-3.2-4.1-3.4-.1-.1-1-1.3-1-2.6s.7-1.9.9-2.1c.2-.2.4-.3.6-.3h.4c.2 0 .3 0 .5.4l.7 1.7c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.2.3-.1.5.5.8 1.1 1.6 1.8 2.2.8.7 1.6 1.1 1.9 1.2.2.1.4 0 .5-.1l.5-.6c.1-.2.3-.2.5-.1l1.7.8c.2.1.4.2.4.3.1.3 0 1-.1 1.3z"/>
+      </svg>
+      <div class="btn-text">
+        <span class="main">Ser Bem Atendida Agora 💖</span>
+        <span class="sub">Fale conosco no WhatsApp</span>
       </div>
-    </div>
+    </a>
 
+    <div class="footer">
+      <p>© 2025 La Bela Store · Todos os direitos reservados</p>
+    </div>
   </div>
 
   <script>
@@ -249,6 +200,5 @@
       c.appendChild(s);
     }
   </script>
-
 </body>
 </html>
