@@ -70,7 +70,53 @@
       margin: 0 auto;
     }
 
-    /* divisor dourado */
+    /* CARD NOME DA LOJA */
+    .store-card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      width: calc(100% - 80px);
+      max-width: 300px;
+      background: linear-gradient(135deg, rgba(252,232,239,0.82) 0%, rgba(247,214,224,0.88) 100%);
+      border: 1.5px solid rgba(201,169,110,0.6);
+      border-radius: 18px;
+      padding: 22px 28px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow:
+        0 8px 32px rgba(181,96,122,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .store-card .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 700;
+      font-style: italic;
+      color: #7a3050;
+      letter-spacing: 3px;
+      line-height: 1.1;
+      text-shadow: 0 1px 6px rgba(201,169,110,0.2);
+    }
+    .store-card .card-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #c9a96e;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+    .store-card .card-line {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #c9a96e, transparent);
+      margin: 10px auto 0;
+    }
+
+
     .divider {
       width: 50px;
       height: 1px;
@@ -160,6 +206,13 @@
 
   <div class="bg"></div>
   <div class="sparkles" id="sparkles"></div>
+
+  <!-- CARD NOME DA LOJA -->
+  <div class="store-card">
+    <div class="card-name">La Bela<br>Store</div>
+    <div class="card-line"></div>
+    <div class="card-sub">Moda Feminina</div>
+  </div>
 
   <div class="content">
     <div class="divider"></div>
