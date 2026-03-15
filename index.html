@@ -78,14 +78,46 @@
       display: flex; flex-direction: column; align-items: center;
     }
 
-    /* ── LOGO IMAGE — full, no crop ── */
-    .logo-wrap {
-      width: 220px;
-      margin-bottom: 10px;
+    /* ── AVATAR — estilo foto de perfil ── */
+    .avatar-wrap {
+      position: relative;
+      width: 120px; height: 120px;
+      margin-bottom: 14px;
       animation: fade-down 0.9s ease both;
-      filter: drop-shadow(0 6px 20px rgba(201,150,58,0.30));
     }
-    .logo-wrap img { width: 100%; height: auto; display: block; border-radius: 12px; }
+    /* anel externo dourado girando */
+    .avatar-ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px dashed rgba(201,150,58,0.5);
+      animation: ring-spin 10s linear infinite;
+    }
+    @keyframes ring-spin { to { transform: rotate(360deg); } }
+
+    /* anel sólido interno */
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-light), var(--pink-deep), var(--gold));
+      z-index: 0;
+      animation: border-glow 3s ease-in-out infinite;
+    }
+    @keyframes border-glow {
+      0%,100% { filter: brightness(1);   box-shadow: 0 0 10px rgba(201,150,58,0.4); }
+      50%      { filter: brightness(1.2); box-shadow: 0 0 22px rgba(201,150,58,0.7); }
+    }
+
+    .avatar-wrap img {
+      position: relative; z-index: 1;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      display: block;
+    }
 
     /* ── GOLD DIVIDER ── */
     .divider {
@@ -195,10 +227,11 @@
 
   <main class="page">
 
-    <!-- Logo completo sem corte -->
-    <div class="logo-wrap">
+    <!-- Avatar estilo perfil -->
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
       <img src="https://doram.shop/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-16.03.13.jpeg"
-           alt="La Bela Store — Logo">
+           alt="La Bela Store">
     </div>
 
     <!-- Divisor dourado -->
