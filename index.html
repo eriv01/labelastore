@@ -73,47 +73,54 @@
     /* CARD NOME DA LOJA */
     .store-card {
       position: fixed;
-      top: 50%;
+      top: 4%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       z-index: 3;
-      width: calc(100% - 80px);
-      max-width: 300px;
-      background: linear-gradient(135deg, rgba(252,232,239,0.82) 0%, rgba(247,214,224,0.88) 100%);
-      border: 1.5px solid rgba(201,169,110,0.6);
-      border-radius: 18px;
-      padding: 22px 28px;
+      width: calc(100% - 48px);
+      max-width: 340px;
+      height: 56vh;
+      background: linear-gradient(160deg, rgba(255,235,243,0.6) 0%, rgba(248,210,225,0.65) 100%);
+      border: 1.5px solid rgba(201,169,110,0.8);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       box-shadow:
-        0 8px 32px rgba(181,96,122,0.18),
-        inset 0 1px 0 rgba(255,255,255,0.6);
+        0 4px 30px rgba(181,96,122,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.5);
     }
-    .store-card .card-name {
+    .store-card .name-la {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-size: 80px;
       font-weight: 700;
-      font-style: italic;
-      color: #7a3050;
-      letter-spacing: 3px;
-      line-height: 1.1;
-      text-shadow: 0 1px 6px rgba(201,169,110,0.2);
+      color: #6b2e48;
+      line-height: 0.9;
+      letter-spacing: 2px;
     }
-    .store-card .card-sub {
+    .store-card .name-bella {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 46px;
+      font-weight: 700;
+      color: #6b2e48;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-top: 4px;
+    }
+    .store-card .name-store {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      color: #c9a96e;
-      letter-spacing: 3px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #6b2e48;
+      letter-spacing: 6px;
       text-transform: uppercase;
       margin-top: 6px;
-    }
-    .store-card .card-line {
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, #c9a96e, transparent);
-      margin: 10px auto 0;
+      opacity: 0.85;
     }
 
 
@@ -209,9 +216,9 @@
 
   <!-- CARD NOME DA LOJA -->
   <div class="store-card">
-    <div class="card-name">La Bela<br>Store</div>
-    <div class="card-line"></div>
-    <div class="card-sub">Moda Feminina</div>
+    <div class="name-la">La</div>
+    <div class="name-bella">Bella</div>
+    <div class="name-store">Store</div>
   </div>
 
   <div class="content">
