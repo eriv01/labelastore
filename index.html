@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LA BELA STORE — Moda Feminina. Seja bem-atendida agora!">
+  <title>La Bela Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; overflow-x: hidden; }
+
+    :root {
+      --pink:       #f4b8c8;
+      --pink-deep:  #d4729a;
+      --rose:       #c9567a;
+      --gold:       #c9963a;
+      --gold-light: #e8c46a;
+      --gold-shine: #f5dfa0;
+      --text-dark:  #7a3350;
+      --text-mid:   #a05070;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fce8f0;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* ── BACKGROUND — imagem ocupa tudo, overlay mínimo ── */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        url('https://doram.shop/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-16.03.13.jpeg')
+        center top / cover no-repeat;
+    }
+    .bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(252,232,240,0.05) 0%,
+        rgba(252,232,240,0.15) 55%,
+        rgba(252,232,240,0.60) 100%
+      );
+    }
+
+    /* ── GLITTER ── */
+    .particles {
+      position: fixed; inset: 0;
+      z-index: 1; pointer-events: none; overflow: hidden;
+    }
+    .particle {
+      position: absolute; border-radius: 50%; opacity: 0;
+      animation: glitter linear infinite;
+    }
+    @keyframes glitter {
+      0%   { transform: translateY(0) scale(0);   opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 0.5; }
+      100% { transform: translateY(-90px) scale(1); opacity: 0; }
+    }
+
+    /* ── CONTAINER ── */
+    .page {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 420px;
+      min-height: 100vh;
+      padding: 48px 28px 48px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    /* ── LOGO IMAGE — full, no crop ── */
+    .logo-wrap {
+      width: 220px;
+      margin-bottom: 10px;
+      animation: fade-down 0.9s ease both;
+      filter: drop-shadow(0 6px 20px rgba(201,150,58,0.30));
+    }
+    .logo-wrap img { width: 100%; height: auto; display: block; border-radius: 12px; }
+
+    /* ── GOLD DIVIDER ── */
+    .divider {
+      display: flex; align-items: center; gap: 10px;
+      width: 100%; max-width: 240px;
+      margin: 18px auto 22px;
+      animation: fade-in 0.9s 0.3s ease both;
+    }
+    .divider-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .divider-gem {
+      width: 7px; height: 7px;
+      background: var(--gold-light);
+      transform: rotate(45deg);
+      box-shadow: 0 0 10px var(--gold-shine);
+      animation: gem-pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes gem-pulse {
+      0%,100% { box-shadow: 0 0 6px var(--gold-shine); transform: rotate(45deg) scale(1); }
+      50%      { box-shadow: 0 0 18px var(--gold-shine); transform: rotate(45deg) scale(1.35); }
+    }
+
+    /* ── BIO ── */
+    .bio {
+      text-align: center; margin-bottom: 34px;
+      animation: fade-up 0.9s 0.45s ease both;
+    }
+    .bio p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 19px;
+      color: var(--text-dark); line-height: 1.65;
+      text-shadow: 0 1px 6px rgba(255,255,255,0.9);
+    }
+    .bio strong { font-style: normal; font-weight: 700; color: var(--rose); }
+
+    /* ── WHATSAPP BUTTON ── */
+    .btn-wrap { width: 100%; animation: fade-up 0.9s 0.65s ease both; }
+
+    .btn-pulse-ring {
+      position: relative; width: 100%;
+    }
+    .btn-pulse-ring::before,
+    .btn-pulse-ring::after {
+      content: ''; position: absolute; inset: -5px;
+      border-radius: 60px;
+      border: 2px solid rgba(18,140,62,0.40);
+      animation: pulse-out 2.2s ease-out infinite;
+      pointer-events: none;
+    }
+    .btn-pulse-ring::after { animation-delay: 1.1s; }
+    @keyframes pulse-out {
+      0%   { transform: scale(1);    opacity: 0.8; }
+      100% { transform: scale(1.09); opacity: 0; }
+    }
+
+    .btn-whatsapp {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      width: 100%; padding: 18px 26px;
+      background: linear-gradient(135deg, #0e7a34 0%, #25d366 50%, #0e7a34 100%);
+      background-size: 200% 200%;
+      border-radius: 50px;
+      text-decoration: none; position: relative; overflow: hidden;
+      box-shadow: 0 6px 30px rgba(18,140,62,0.50), 0 0 0 1.5px rgba(255,255,255,0.15) inset;
+      animation: btn-shift 3.5s ease infinite;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-whatsapp:hover  { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 40px rgba(18,140,62,0.65); }
+    .btn-whatsapp:active { transform: scale(0.97); }
+    @keyframes btn-shift {
+      0%,100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+
+    /* shimmer */
+    .btn-whatsapp::before {
+      content: ''; position: absolute;
+      top: 0; left: -100%; width: 55%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      animation: sweep 3s ease infinite;
+    }
+    @keyframes sweep {
+      0%,100% { left: -100%; }
+      50%      { left: 160%; }
+    }
+
+    .wa-icon { flex-shrink: 0; width: 28px; height: 28px; filter: drop-shadow(0 0 6px rgba(255,255,255,0.5)); }
+    .btn-text { display: flex; flex-direction: column; align-items: flex-start; }
+    .btn-cta  { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; color:#fff; letter-spacing:0.5px; text-transform:uppercase; line-height:1.2; }
+    .btn-sub  { font-size:10px; color:rgba(255,255,255,0.75); letter-spacing:0.8px; margin-top:3px; }
+
+    /* ── FOOTER ── */
+    .footer { margin-top: 38px; animation: fade-in 1s 1s ease both; }
+    .footer p { font-size:10px; color:rgba(160,80,112,0.55); letter-spacing:2.5px; text-transform:uppercase; text-align:center; }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fade-down { from{opacity:0;transform:translateY(-24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fade-up   { from{opacity:0;transform:translateY(20px)}  to{opacity:1;transform:translateY(0)} }
+    @keyframes fade-in   { from{opacity:0} to{opacity:1} }
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+  <div class="particles" id="particles"></div>
+
+  <main class="page">
+
+    <!-- Logo completo sem corte -->
+    <div class="logo-wrap">
+      <img src="https://doram.shop/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-16.03.13.jpeg"
+           alt="La Bela Store — Logo">
+    </div>
+
+    <!-- Divisor dourado -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Bio -->
+    <div class="bio">
+      <p>Peças <strong>exclusivas</strong> para mulheres que sabem o que querem.<br>Estilo, elegância e atendimento <strong>personalizado</strong>.</p>
+    </div>
+
+    <!-- Botão WhatsApp -->
+    <div class="btn-wrap">
+      <div class="btn-pulse-ring">
+        <a class="btn-whatsapp"
+           href="https://wa.me/5547992864585?text=Ol%C3%A1!%20Seja%20muito%20bem-vinda(o)%20%C3%A0%20nossa%20loja%20%F0%9F%8C%B8%0AObrigada%20por%20entrar%20em%20contato!%20Em%20breve%20vou%20te%20atender%20e%20te%20mostrar%20nossas%20novidades%20dispon%C3%ADveis.%0AFique%20%C3%A0%20vontade%20para%20j%C3%A1%20me%20contar%20o%20que%20voc%C3%AA%20est%C3%A1%20procurando.%20%F0%9F%92%96"
+           target="_blank" rel="noopener">
+
+          <!-- WhatsApp SVG -->
+          <svg class="wa-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 3C8.82 3 3 8.82 3 16c0 2.33.63 4.5 1.73 6.36L3 29l6.85-1.79A13 13 0 0016 29c7.18 0 13-5.82 13-13S23.18 3 16 3z" fill="rgba(255,255,255,0.18)"/>
+            <path d="M22.5 19.26c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.008-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.49s1.08 2.89 1.23 3.09c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="white"/>
+          </svg>
+
+          <div class="btn-text">
+            <span class="btn-cta">Ser Bem Atendida Agora 💖</span>
+            <span class="btn-sub">Fale conosco no WhatsApp</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer"><p>© 2025 La Bela Store</p></div>
+
+  </main>
+
+  <script>
+    const container = document.getElementById('particles');
+    const colors = ['#f4b8c8','#e8c46a','#f5dfa0','#d4729a','#ffffff','#c9963a'];
+    for (let i = 0; i < 28; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 5 + 2;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      p.style.cssText = `
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        width:${size}px; height:${size}px;
+        background:${color};
+        animation-duration:${Math.random()*5+4}s;
+        animation-delay:${Math.random()*7}s;
+        box-shadow:0 0 ${size*2}px ${color};
+      `;
+      container.appendChild(p);
+    }
+  </script>
+</body>
+</html>
