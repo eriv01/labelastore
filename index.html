@@ -58,25 +58,18 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 0;
-      background-image: url('https://doram.shop/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-16.03.13.jpeg');
+      background-image: url('bg-labela.png');
       background-size: cover;
-      background-position: center top;
+      background-position: center center;
       background-repeat: no-repeat;
     }
-    /* soft overlay so text stays readable */
     .bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(252,220,232,0.18) 0%,
-        rgba(252,220,232,0.32) 40%,
-        rgba(252,220,232,0.55) 100%
-      );
+      background: rgba(252,220,232,0.08);
     }
 
-    /* ── CONTENT ── */
     .content {
       position: relative;
       z-index: 1;
@@ -84,8 +77,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 28px 48px;
-      gap: 0;
+      justify-content: center;
+      min-height: 100svh;
+      padding: 28px;
     }
 
     /* ── CROWN ANIMATION ── */
