@@ -70,7 +70,7 @@
       margin: 0 auto;
     }
 
-    /* CARD NOME DA LOJA */
+    /* CARD LOGO */
     .store-card {
       position: fixed;
       top: 4%;
@@ -78,45 +78,18 @@
       transform: translateX(-50%);
       z-index: 3;
       width: calc(100% - 48px);
-      max-width: 340px;
+      max-width: 320px;
       height: 56vh;
-      background: #f5c8d8;
-      border: 1.5px solid #c9a96e;
       border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-shadow: 0 4px 30px rgba(181,96,122,0.18);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(181,96,122,0.25);
     }
-    .store-card .name-la {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 80px;
-      font-weight: 700;
-      color: #6b2e48;
-      line-height: 0.9;
-      letter-spacing: 2px;
-    }
-    .store-card .name-bella {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 46px;
-      font-weight: 700;
-      color: #6b2e48;
-      letter-spacing: 8px;
-      text-transform: uppercase;
-      line-height: 1.1;
-      margin-top: 4px;
-    }
-    .store-card .name-store {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: #6b2e48;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      margin-top: 6px;
-      opacity: 0.85;
+    .store-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
 
@@ -210,11 +183,9 @@
   <div class="bg"></div>
   <div class="sparkles" id="sparkles"></div>
 
-  <!-- CARD NOME DA LOJA -->
+  <!-- CARD LOGO -->
   <div class="store-card">
-    <div class="name-la">La</div>
-    <div class="name-bella">Bella</div>
-    <div class="name-store">Store</div>
+    <img src="logo.jpg" alt="LA BELLA STORE">
   </div>
 
   <div class="content">
